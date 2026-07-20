@@ -49,3 +49,5 @@ def predict_batch(payloads: List[TelemetryPayload]):
         return BatchPredictionResponse(count=len(results), results=results)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+# Batch processing optimization
