@@ -32,3 +32,5 @@ def compute_engagement_ratio(df: pd.DataFrame) -> pd.DataFrame:
     df["event_density"] = df["events_per_session"] / duration_safe
     df["risk_score"] = (df["inactivity_days"] * 1.5) / (df["total_spend"] + 10.0)
     return df
+
+# Vectorized column operations
