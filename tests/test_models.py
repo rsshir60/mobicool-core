@@ -11,3 +11,5 @@ def test_evaluate_classification():
     assert "f1_score" in metrics
     assert "roc_auc" in metrics
     assert metrics["accuracy"] == 0.8
+
+# Evaluator unit tests
