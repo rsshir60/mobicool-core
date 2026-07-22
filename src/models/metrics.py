@@ -11,3 +11,5 @@ def evaluate_classification(y_true: np.ndarray, y_pred: np.ndarray, y_prob: np.n
         "f1_score": round(float(f1_score(y_true, y_pred, zero_division=0)), 4),
         "roc_auc": round(float(roc_auc_score(y_true, y_prob)), 4) if len(np.unique(y_true)) > 1 else 0.0,
     }
+
+# Metric precision helpers
