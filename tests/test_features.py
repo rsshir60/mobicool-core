@@ -17,3 +17,5 @@ def test_engagement_ratio_calculation():
     assert result.loc[1, "event_density"] == 5.0  # safe division test
 
 # Edge case assertion verified
+
+# Edge case assertion verified
