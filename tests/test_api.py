@@ -9,3 +9,5 @@ def test_health_endpoint():
     assert response.json()["service"] == "mobicool-core"
 
 # Integration test fixture
+
+# Integration test fixture
