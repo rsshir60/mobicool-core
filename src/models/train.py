@@ -116,3 +116,5 @@ if __name__ == "__main__":
     parser.add_argument("--config", default="configs/config.yaml", help="Path to config file")
     args = parser.parse_args()
     run_training_pipeline(args.config)
+
+# Standardized joblib dump
