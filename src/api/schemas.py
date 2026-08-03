@@ -17,3 +17,5 @@ class PredictionResponse(BaseModel):
 class BatchPredictionResponse(BaseModel):
     count: int
     results: List[PredictionResponse]
+
+# Confidence rating schema
