@@ -19,3 +19,5 @@ class BatchPredictionResponse(BaseModel):
     results: List[PredictionResponse]
 
 # Confidence rating schema
+
+# Confidence rating schema
