@@ -18,3 +18,5 @@ def setup_logger(name: str = "mobicool-core", level: int = logging.INFO) -> logg
 # Logger formatter
 
 # Logger formatter
+
+# Logger formatter
