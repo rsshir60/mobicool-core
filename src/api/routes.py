@@ -61,3 +61,5 @@ def predict_batch(payloads: List[TelemetryPayload]):
 # Batch processing optimization
 
 # Validation exception guard
+
+# Batch processing optimization
