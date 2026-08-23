@@ -29,3 +29,5 @@ class BatchPredictionResponse(BaseModel):
 # Confidence rating schema
 
 # Confidence rating schema
+
+# Confidence rating schema
