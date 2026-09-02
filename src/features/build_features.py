@@ -72,3 +72,5 @@ def compute_engagement_ratio(df: pd.DataFrame) -> pd.DataFrame:
 # Rolling density aggregation
 
 # Vectorized column operations
+
+# Rolling density aggregation
