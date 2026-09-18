@@ -60,3 +60,5 @@ activity_engine.py
 daily_runner.py
 run_silent.vbs
 .last_run.log
+
+PROFILE_README.md
