@@ -1,0 +1,27 @@
+﻿[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mobicool-core"
+version = "0.2.0"
+description = "Core predictive analytics and machine learning inference engine for Mobicool"
+authors = [{ name = "rsshir60", email = "ranjeetshirsath358@gmail.com" }]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.26.0",
+    "pandas>=2.1.0",
+    "scikit-learn>=1.4.0",
+    "fastapi>=0.110.0",
+    "pydantic>=2.6.0",
+    "pyyaml>=6.0.1"
+]
+
+[tool.black]
+line-length = 100
+target-version = ['py310']
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
