@@ -1,4 +1,4 @@
-﻿# Byte-compiled / optimized / DLL files
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
@@ -55,6 +55,7 @@ htmlcov/
 .idea/
 *.swp
 node_modules/
+node_modules/
 
 activity_engine.py
 daily_runner.py
@@ -62,3 +63,4 @@ run_silent.vbs
 .last_run.log
 
 PROFILE_README.md
+rsshir60_profile/
