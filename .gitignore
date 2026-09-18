@@ -57,3 +57,6 @@ htmlcov/
 node_modules/
 
 activity_engine.py
+daily_runner.py
+run_silent.vbs
+.last_run.log
