@@ -64,3 +64,7 @@ run_silent.vbs
 
 PROFILE_README.md
 rsshir60_profile/
+*.pdf
+RESUME_*.md
+SQL_*.md
+.runner_history.log
