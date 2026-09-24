@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ranjeet Shirsath | Applied Data Scientist & ML Systems Engineer</title>
+  <meta name="description" content="Portfolio of Ranjeet Shirsath — Data Scientist & Applied ML Engineer specializing in production MLOps pipelines, sub-30ms inference architectures, and hybrid semantic retrieval." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #07090e;
+      --surface: #0e121b;
+      --surface-hover: #161c2b;
+      --surface-card: #121723;
+      --border: #1e2638;
+      --border-accent: #2e3a54;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --accent: #10b981;
+      --accent-glow: rgba(16, 185, 129, 0.2);
+      --cyan: #06b6d4;
+      --cyan-glow: rgba(6, 182, 212, 0.15);
+      --blue: #3b82f6;
+      --purple: #8b5cf6;
+      --danger: #ef4444;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(circle at 15% 10%, rgba(16, 185, 129, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 85% 30%, rgba(6, 182, 212, 0.04) 0%, transparent 40%),
+        linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(7, 9, 14, 0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+    }
+
+    .nav-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-tag {
+      color: var(--accent);
+      background: rgba(16, 185, 129, 0.1);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .btn-nav-resume {
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--cyan);
+      padding: 7px 15px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-nav-resume:hover {
+      background: var(--cyan);
+      color: #000;
+      box-shadow: 0 0 15px var(--cyan-glow);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 70px 0 50px;
+    }
+
+    .badge-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    .hero-h1 {
+      font-size: 3.3rem;
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.035em;
+      margin-bottom: 20px;
+    }
+
+    .hero-h1 span.gradient {
+      background: linear-gradient(135deg, #ffffff 40%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-h1 span.highlight {
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 800px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+    }
+
+    .btn-emerald {
+      background: var(--accent);
+      color: #042416;
+    }
+
+    .btn-emerald:hover {
+      box-shadow: 0 0 25px var(--accent-glow);
+      transform: translateY(-1px);
+    }
+
+    .btn-dark {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-dark:hover {
+      background: var(--surface-hover);
+      border-color: var(--border-accent);
+      color: var(--text);
+    }
+
+    /* Metrics Strip */
+    .metrics-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin: 40px 0 60px;
+    }
+
+    .metric-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .metric-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--border-accent), transparent);
+    }
+
+    .metric-val {
+      font-family: var(--font-mono);
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: var(--cyan);
+      margin-bottom: 4px;
+      letter-spacing: -0.03em;
+    }
+
+    .metric-label {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Interactive Live Sandbox Section */
+    .sandbox-section {
+      background: #0b0f19;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      margin: 60px 0;
+      box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);
+    }
+
+    .sandbox-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .sandbox-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sandbox-title .live-pill {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 2px 8px;
+      border-radius: 9999px;
+    }
+
+    .sandbox-tabs {
+      display: flex;
+      gap: 8px;
+      background: var(--surface);
+      padding: 4px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .tab-btn.active {
+      background: var(--surface-hover);
+      color: var(--text);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    /* Sandbox: Inference Simulator */
+    .sim-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .control-group {
+      margin-bottom: 18px;
+    }
+
+    .control-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      font-family: var(--font-mono);
+    }
+
+    .slider {
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--border);
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--cyan);
+      cursor: pointer;
+      box-shadow: 0 0 10px var(--cyan);
+    }
+
+    .sim-output {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .output-score-box {
+      text-align: center;
+      padding: 20px;
+      background: var(--bg);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 20px;
+    }
+
+    .score-num {
+      font-family: var(--font-mono);
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .score-band {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .telemetry-row {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+
+    /* Sandbox: Terminal Benchmark Runner */
+    .terminal-box {
+      background: #05070a;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      overflow: hidden;
+    }
+
+    .term-bar {
+      background: #0f1420;
+      padding: 10px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .term-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+
+    .term-body {
+      padding: 20px;
+      min-height: 220px;
+      color: #cbd5e1;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+
+    .term-actions {
+      display: flex;
+      gap: 10px;
+      padding: 12px 16px;
+      background: #0a0e16;
+      border-top: 1px solid var(--border);
+    }
+
+    .term-btn {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .term-btn:hover {
+      background: var(--surface-hover);
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    /* Section Headers */
+    .section-title {
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title span.num {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      font-size: 0.95rem;
+    }
+
+    /* System Projects */
+    .project-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 32px;
+      margin-bottom: 28px;
+      transition: border-color 0.2s;
+    }
+
+    .project-card:hover {
+      border-color: var(--border-accent);
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .project-heading {
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 10px;
+    }
+
+    .link-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 5px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .link-pill:hover {
+      color: var(--cyan);
+      border-color: var(--cyan);
+    }
+
+    .project-summary {
+      color: var(--text-muted);
+      font-size: 0.96rem;
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+
+    /* Architecture Flow Box */
+    .arch-flow {
+      background: #080b12;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow-x: auto;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+    }
+
+    .arch-node {
+      background: var(--surface);
+      border: 1px solid var(--border-accent);
+      padding: 6px 12px;
+      border-radius: 6px;
+      white-space: nowrap;
+      color: var(--text);
+    }
+
+    .arch-node.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(16, 185, 129, 0.08);
+    }
+
+    .arch-arrow {
+      color: var(--text-dim);
+    }
+
+    .feature-list {
+      list-style: none;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .feature-list li {
+      font-size: 0.92rem;
+      color: #cbd5e1;
+      display: flex;
+      gap: 12px;
+    }
+
+    .feature-list li::before {
+      content: '▹';
+      color: var(--accent);
+      font-size: 1.1rem;
+      line-height: 1.3;
+    }
+
+    .tech-pill-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      padding: 3px 10px;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.08);
+      color: var(--cyan);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    /* Skills Grid */
+    .skills-wrapper {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 60px;
+    }
+
+    .skill-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .skill-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .skill-tag {
+      font-size: 0.82rem;
+      background: var(--surface);
+      color: #cbd5e1;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    /* Timeline */
+    .timeline {
+      margin-bottom: 60px;
+    }
+
+    .timeline-item {
+      border-left: 2px solid var(--border);
+      padding-left: 24px;
+      position: relative;
+      margin-bottom: 36px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    .timeline-role {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .timeline-org {
+      color: var(--cyan);
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .timeline-meta {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+    }
+
+    .timeline-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .timeline-bullets li {
+      font-size: 0.91rem;
+      color: var(--text-muted);
+      display: flex;
+      gap: 10px;
+    }
+
+    .timeline-bullets li::before {
+      content: '•';
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
+
+    /* Footer & Toast */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 48px 0;
+      margin-top: 80px;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--surface-card);
+      border: 1px solid var(--accent);
+      color: var(--text);
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+      transform: translateY(10px);
+      z-index: 9999;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 840px) {
+      .hero-h1 { font-size: 2.3rem; }
+      .metrics-bar { grid-template-columns: repeat(2, 1fr); }
+      .sim-grid { grid-template-columns: 1fr; }
+      .skills-wrapper { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Engineering Navigation -->
+  <header>
+    <div class="container nav-wrap">
+      <a href="#" class="brand">
+        <span class="brand-tag">ML-OPS</span> ranjeet.shirsath
+      </a>
+      <ul class="nav-links">
+        <li><a href="#sandbox">Live Playground</a></li>
+        <li><a href="#systems">Flagship Systems</a></li>
+        <li><a href="#competencies">Arsenal</a></li>
+        <li><a href="#experience">Track Record</a></li>
+        <li><a href="https://github.com/rsshir60" target="_blank">GitHub</a></li>
+        <li><a href="resume.pdf" target="_blank" class="btn-nav-resume">📄 Download CV</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="container">
+    
+    <!-- Hero Header -->
+    <section class="hero">
+      <div class="badge-status">
+        <div class="pulse-dot"></div>
+        OPEN TO MACHINE LEARNING & DATA SCIENCE ROLES
+      </div>
+
+      <h1 class="hero-h1">
+        <span class="gradient">Applied Data Scientist &</span><br />
+        <span class="highlight">Machine Learning Systems Engineer</span>
+      </h1>
+
+      <p class="hero-sub">
+        Translating complex enterprise data into production predictive pipelines, sub-30ms RESTful inference engines, and hybrid semantic retrieval (RAG). 2+ years of production experience architecting automated CI/CD, Optuna Bayesian tuning, and containerized microservices.
+      </p>
+
+      <div class="hero-actions">
+        <a href="resume.pdf" target="_blank" class="btn btn-emerald">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Download Resume (PDF)
+        </a>
+        <a href="#sandbox" class="btn btn-dark">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          Launch Interactive Sandbox
+        </a>
+        <a href="https://github.com/rsshir60" target="_blank" class="btn btn-dark">GitHub Repositories</a>
+        <button class="btn btn-dark" onclick="copyEmail()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          Copy Email
+        </button>
+      </div>
+    </section>
+
+    <!-- Key Performance Metrics Strip -->
+    <div class="metrics-bar">
+      <div class="metric-card">
+        <div class="metric-val">&lt; 30ms</div>
+        <div class="metric-label">P99 REST Inference Latency</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val">0.88</div>
+        <div class="metric-label">ROC-AUC via Optuna Tuning</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val">+31%</div>
+        <div class="metric-label">Top-5 Retrieval Recall (RRF)</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val">100%</div>
+        <div class="metric-label">Pytest CI/CD Automation</div>
+      </div>
+    </div>
+
+    <!-- Live Interactive ML Playground -->
+    <section id="sandbox" class="sandbox-section">
+      <div class="sandbox-header">
+        <div class="sandbox-title">
+          <span>⚡ Live System Sandbox</span>
+          <span class="live-pill">CLIENT-SIDE SIMULATION</span>
+        </div>
+        <div class="sandbox-tabs">
+          <button class="tab-btn active" onclick="switchTab('sim')">Model Inference Engine</button>
+          <button class="tab-btn" onclick="switchTab('term')">CI/CD & Benchmark Runner</button>
+        </div>
+      </div>
+
+      <!-- Tab 1: Inference Engine Simulator -->
+      <div id="tab-sim" class="tab-content active">
+        <div class="sim-grid">
+          <div class="sim-controls">
+            <div class="control-group">
+              <div class="control-label">
+                <span>MONTHLY_SPEND ($)</span>
+                <span id="val-spend">$240</span>
+              </div>
+              <input type="range" class="slider" id="slider-spend" min="10" max="1000" value="240" oninput="runInference()" />
+            </div>
+
+            <div class="control-group">
+              <div class="control-label">
+                <span>INACTIVITY_WINDOW (DAYS)</span>
+                <span id="val-inactivity">12 days</span>
+              </div>
+              <input type="range" class="slider" id="slider-inactivity" min="0" max="60" value="12" oninput="runInference()" />
+            </div>
+
+            <div class="control-group">
+              <div class="control-label">
+                <span>SUPPORT_TICKETS_30D</span>
+                <span id="val-tickets">3 tickets</span>
+              </div>
+              <input type="range" class="slider" id="slider-tickets" min="0" max="15" value="3" oninput="runInference()" />
+            </div>
+
+            <div class="control-group">
+              <div class="control-label">
+                <span>SESSION_FREQUENCY (WEEKLY)</span>
+                <span id="val-freq">18 sessions</span>
+              </div>
+              <input type="range" class="slider" id="slider-freq" min="1" max="50" value="18" oninput="runInference()" />
+            </div>
+          </div>
+
+          <div class="sim-output">
+            <div class="output-score-box">
+              <div class="score-num" id="score-display">24.2%</div>
+              <div class="score-band" id="band-display" style="color: var(--accent);">LOW CHURN RISK</div>
+            </div>
+            
+            <div class="telemetry-row">
+              <span>STATUS:</span>
+              <span style="color: var(--accent);">200 OK (VALIDATED)</span>
+            </div>
+            <div class="telemetry-row">
+              <span>INFERENCE_LATENCY:</span>
+              <span id="latency-display" style="color: var(--cyan);">2.84 ms</span>
+            </div>
+            <div class="telemetry-row">
+              <span>SCHEMA_GUARD:</span>
+              <span>Pydantic v2.6.4</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Terminal Benchmark Runner -->
+      <div id="tab-term" class="tab-content">
+        <div class="terminal-box">
+          <div class="term-bar">
+            <div class="term-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <span style="color: var(--text-dim); font-size: 0.75rem;">runner@mobicool-ci-cd:~</span>
+          </div>
+          <div class="term-body" id="term-output">[sys] Container runtime ready. Click a runner button below to execute diagnostics.</div>
+          <div class="term-actions">
+            <button class="term-btn" onclick="runTermCommand('pytest')">$ pytest --cov=mobicool</button>
+            <button class="term-btn" onclick="runTermCommand('bench')">$ locust -u 100 --headless</button>
+            <button class="term-btn" onclick="runTermCommand('drift')">$ python drift_detector.py</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Flagship Production Systems -->
+    <section id="systems">
+      <h2 class="section-title"><span class="num">01.</span> Flagship Production Architectures</h2>
+      <p class="section-desc">Production-grade open-source repositories featuring containerization, automated testing, and deployment pipelines.</p>
+
+      <!-- mobicool-core -->
+      <article class="project-card">
+        <div class="project-top">
+          <h3 class="project-heading">mobicool-core: High-Throughput MLOps Predictive Platform</h3>
+          <div class="project-links">
+            <a href="https://github.com/rsshir60/mobicool-core" target="_blank" class="link-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+              github.com/rsshir60/mobicool-core
+            </a>
+          </div>
+        </div>
+
+        <p class="project-summary">
+          Architected a modular MLOps tabular serving platform with automated feature validation, quantile clipping, and real-time streaming inference under sub-30ms P99 SLAs.
+        </p>
+
+        <div class="arch-flow">
+          <div class="arch-node">REST Payload</div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-node active">Pydantic Schema Guard</div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-node">Quantile Transformer</div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-node active">FastAPI Inference (&lt;30ms)</div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-node">Evidently Drift Logger</div>
+        </div>
+
+        <ul class="feature-list">
+          <li>Eliminated pipeline schema drift by integrating Pydantic v2 data guards with automated payload rejection on invalid telemetry.</li>
+          <li>Employed Optuna Bayesian optimization across 150 trials, boosting ensemble ROC-AUC from 0.72 baseline to 0.88.</li>
+          <li>Containerized complete inference microservice with multi-stage Dockerfiles and orchestrated 100% automated regression tests on GitHub Actions.</li>
+        </ul>
+
+        <div class="tech-pill-group">
+          <span class="pill">Python</span>
+          <span class="pill">FastAPI</span>
+          <span class="pill">Docker</span>
+          <span class="pill">Pydantic</span>
+          <span class="pill">Scikit-Learn</span>
+          <span class="pill">LightGBM</span>
+          <span class="pill">MLflow</span>
+          <span class="pill">Pytest CI/CD</span>
+        </div>
+      </article>
+
+      <!-- semantic-rag-engine -->
+      <article class="project-card">
+        <div class="project-top">
+          <h3 class="project-heading">semantic-rag-engine: Hybrid Enterprise Semantic Search</h3>
+          <div class="project-links">
+            <a href="https://github.com/rsshir60/semantic-rag-engine" target="_blank" class="link-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+              github.com/rsshir60/semantic-rag-engine
+            </a>
+          </div>
+        </div>
+
+        <p class="project-summary">
+          Engineered an enterprise hybrid retrieval engine merging BM25 sparse keyword indexing with dense vector embeddings via custom Reciprocal Rank Fusion (RRF).
+        </p>
+
+        <div class="arch-flow">
+          <div class="arch-node">Query</div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-node">BM25 Sparse Lexical</div>
+          <div class="arch-arrow">+</div>
+          <div class="arch-node">Dense Cosine Embeddings</div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-node active">Reciprocal Rank Fusion (k=60)</div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-node">+31% Recall Output</div>
+        </div>
+
+        <ul class="feature-list">
+          <li>Mitigated generative hallucination by lifting Top-5 document retrieval recall by 31% over isolated dense vector search.</li>
+          <li>Implemented chunking, embedding generation, and cosine distance indexing supporting sub-10ms response times.</li>
+          <li>Containerized complete search service with REST endpoints for dense, sparse, and hybrid scoring modes.</li>
+        </ul>
+
+        <div class="tech-pill-group">
+          <span class="pill">PyTorch</span>
+          <span class="pill">Hugging Face</span>
+          <span class="pill">BM25</span>
+          <span class="pill">Vector Search</span>
+          <span class="pill">RRF Fusion</span>
+          <span class="pill">FastAPI</span>
+          <span class="pill">Docker</span>
+        </div>
+      </article>
+    </section>
+
+    <!-- Technical Arsenal -->
+    <section id="competencies">
+      <h2 class="section-title"><span class="num">02.</span> Core Technical Arsenal</h2>
+      <p class="section-desc">Production technologies, frameworks, and deployment stacks proven in real environments.</p>
+
+      <div class="skills-wrapper">
+        <div class="skill-card">
+          <h3>Languages & Data</h3>
+          <ul class="skill-tags">
+            <li class="skill-tag">Python (NumPy, SciPy)</li>
+            <li class="skill-tag">PostgreSQL / SQL</li>
+            <li class="skill-tag">Polars & Pandas</li>
+            <li class="skill-tag">Bash / Linux Scripting</li>
+            <li class="skill-tag">C++</li>
+            <li class="skill-tag">BigQuery</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h3>Machine Learning & NLP</h3>
+          <ul class="skill-tags">
+            <li class="skill-tag">Scikit-Learn</li>
+            <li class="skill-tag">LightGBM & XGBoost</li>
+            <li class="skill-tag">PyTorch</li>
+            <li class="skill-tag">Hugging Face Transformers</li>
+            <li class="skill-tag">Optuna (Bayesian Tuning)</li>
+            <li class="skill-tag">CatBoost</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h3>MLOps, Serving & Cloud</h3>
+          <ul class="skill-tags">
+            <li class="skill-tag">FastAPI & Uvicorn</li>
+            <li class="skill-tag">Docker & Compose</li>
+            <li class="skill-tag">Pydantic Schema Validation</li>
+            <li class="skill-tag">Pytest & Coverage</li>
+            <li class="skill-tag">GitHub Actions CI/CD</li>
+            <li class="skill-tag">MLflow & DVC</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Professional Track Record -->
+    <section id="experience">
+      <h2 class="section-title"><span class="num">03.</span> Professional Track Record</h2>
+      <p class="section-desc">Delivering measurable ML engineering impact across production systems.</p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-role">Data Scientist & ML Engineer</div>
+          <div class="timeline-org">Enterprise Intelligence Solutions</div>
+          <div class="timeline-meta">Aug 2024 – Present | Pune, India (Hybrid)</div>
+          <ul class="timeline-bullets">
+            <li>Architected and deployed automated tabular ML inference pipelines serving real-time churn and risk-scoring models under sub-30ms SLA constraints.</li>
+            <li>Engineered automated data validation layers utilizing Pydantic and custom outlier-clipping transformers, eliminating pipeline failures caused by schema drift.</li>
+            <li>Implemented stratified cross-validation routines and Bayesian hyperparameter searches with Optuna, lifting model ROC-AUC from 0.72 to 0.88 across imbalanced datasets.</li>
+            <li>Containerized model inference microservices with Docker and orchestrated continuous integration via GitHub Actions, achieving 100% automated regression test coverage using Pytest.</li>
+            <li>Designed A/B test evaluation frameworks and cohort retention monitoring dashboards using advanced SQL window functions.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-role">Machine Learning & Data Associate</div>
+          <div class="timeline-org">Digital Solutions Lab</div>
+          <div class="timeline-meta">Jun 2023 – Jul 2024</div>
+          <ul class="timeline-bullets">
+            <li>Developed end-to-end EDA and feature transformation workflows for large multi-source relational datasets using Pandas, Polars, and PostgreSQL.</li>
+            <li>Built automated behavioral feature aggregation scripts (rolling interaction densities, inactivity windows, lifetime spend) that improved classifier F1-scores by 14%.</li>
+            <li>Conducted comparative performance benchmarks between tree-based ensembles (Random Forest, LightGBM) and linear baselines, documenting model trade-offs for technical leadership.</li>
+            <li>Streamlined model serialization and artifact versioning protocols with Joblib and MLflow tracking registries.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Ranjeet Shirsath. Production-engineered portfolio — zero bloated frameworks, sub-millisecond execution.</p>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast">Email copied to clipboard!</div>
+
+  <script>
+    // Interactive Inference Simulator Engine
+    function runInference() {
+      const spend = parseFloat(document.getElementById('slider-spend').value);
+      const inactivity = parseFloat(document.getElementById('slider-inactivity').value);
+      const tickets = parseFloat(document.getElementById('slider-tickets').value);
+      const freq = parseFloat(document.getElementById('slider-freq').value);
+
+      document.getElementById('val-spend').innerText = '$' + spend;
+      document.getElementById('val-inactivity').innerText = inactivity + ' days';
+      document.getElementById('val-tickets').innerText = tickets + ' tickets';
+      document.getElementById('val-freq').innerText = freq + ' sessions';
+
+      // Sigmoid Risk Scoring Emulation
+      const t0 = performance.now();
+      const z = -2.1 + (inactivity * 0.08) + (tickets * 0.35) - (spend * 0.003) - (freq * 0.06);
+      const prob = 1 / (1 + Math.exp(-z));
+      const t1 = performance.now();
+
+      const pct = (prob * 100).toFixed(1);
+      const scoreDisplay = document.getElementById('score-display');
+      const bandDisplay = document.getElementById('band-display');
+      const latencyDisplay = document.getElementById('latency-display');
+
+      scoreDisplay.innerText = pct + '%';
+      latencyDisplay.innerText = ((t1 - t0) + 2.1).toFixed(2) + ' ms';
+
+      if (prob < 0.30) {
+        bandDisplay.innerText = 'LOW CHURN RISK';
+        bandDisplay.style.color = '#10b981';
+        scoreDisplay.style.color = '#10b981';
+      } else if (prob < 0.65) {
+        bandDisplay.innerText = 'MODERATE CHURN RISK';
+        bandDisplay.style.color = '#f59e0b';
+        scoreDisplay.style.color = '#f59e0b';
+      } else {
+        bandDisplay.innerText = 'CRITICAL CHURN RISK';
+        bandDisplay.style.color = '#ef4444';
+        scoreDisplay.style.color = '#ef4444';
+      }
+    }
+
+    // Tab Switching Logic
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+      if (tab === 'sim') {
+        document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
+        document.getElementById('tab-sim').classList.add('active');
+      } else {
+        document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+        document.getElementById('tab-term').classList.add('active');
+      }
+    }
+
+    // Terminal Emulator Logic
+    function runTermCommand(cmd) {
+      const out = document.getElementById('term-output');
+      if (cmd === 'pytest') {
+        out.innerText = `[test] Executing Pytest suite across mobicool-core...\n` +
+                        `tests/test_validation.py::test_schema_drift PASSED        [ 25%]\n` +
+                        `tests/test_transformers.py::test_quantile_clipping PASSED [ 50%]\n` +
+                        `tests/test_inference.py::test_latency_sla_under_30ms PASSED[ 75%]\n` +
+                        `tests/test_api.py::test_predict_endpoint_response_200 PASSED [100%]\n\n` +
+                        `================= 4 passed, 0 warnings in 0.42s =================\n` +
+                        `TOTAL TEST COVERAGE: 100%`;
+      } else if (cmd === 'bench') {
+        out.innerText = `[bench] Starting Locust load test (Users: 100, Spawn Rate: 10/s)...\n` +
+                        `Endpoint: POST /api/v1/predict\n` +
+                        `Requests dispatched: 2,500\n` +
+                        `Failures: 0 (0.00%)\n` +
+                        `P50 Latency:  8.2ms\n` +
+                        `P95 Latency: 19.4ms\n` +
+                        `P99 Latency: 27.8ms (Target SLA: < 30ms - PASS)`;
+      } else if (cmd === 'drift') {
+        out.innerText = `[drift] Running Kolmogorov-Smirnov distribution check against baseline...\n` +
+                        `Feature: monthly_spend        p-value: 0.842  (No Drift)\n` +
+                        `Feature: inactivity_window    p-value: 0.619  (No Drift)\n` +
+                        `Feature: support_tickets_30d  p-value: 0.912  (No Drift)\n` +
+                        `Status: Feature distributions stable within 95% confidence threshold.`;
+      }
+    }
+
+    // Copy Email Toast
+    function copyEmail() {
+      navigator.clipboard.writeText('ranjeetshirsath358@gmail.com');
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+
+    // Initial inference run on load
+    runInference();
+  </script>
+</body>
+</html>

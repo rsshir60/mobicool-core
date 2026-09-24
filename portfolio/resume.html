@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ranjeet Shirsath - Resume</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 12mm 14mm 12mm 14mm;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #1a1a1a;
+      background: #fff;
+      font-size: 9.5pt;
+      line-height: 1.35;
+    }
+    a {
+      color: #0d47a1;
+      text-decoration: none;
+    }
+    .header {
+      text-align: center;
+      border-bottom: 1.5px solid #111;
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+    }
+    .name {
+      font-size: 20pt;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
+      color: #0f172a;
+      margin-bottom: 2px;
+    }
+    .title {
+      font-size: 11pt;
+      font-weight: 700;
+      color: #2563eb;
+      margin-bottom: 5px;
+    }
+    .contact-row {
+      font-size: 8.8pt;
+      color: #475569;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .contact-row span {
+      display: inline-block;
+    }
+    .section {
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: 10pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #0f172a;
+      border-bottom: 1px solid #cbd5e1;
+      padding-bottom: 2px;
+      margin-bottom: 6px;
+    }
+    .summary-text {
+      color: #334155;
+      text-align: justify;
+      font-size: 9pt;
+      line-height: 1.4;
+    }
+    .skills-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9pt;
+    }
+    .skills-table td {
+      padding: 2px 0;
+      vertical-align: top;
+    }
+    .skills-label {
+      font-weight: 700;
+      color: #1e293b;
+      width: 26%;
+    }
+    .skills-val {
+      color: #334155;
+      width: 74%;
+    }
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-top: 5px;
+      margin-bottom: 2px;
+    }
+    .item-title {
+      font-size: 9.5pt;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .item-org {
+      font-weight: 600;
+      color: #2563eb;
+    }
+    .item-date {
+      font-size: 8.5pt;
+      color: #64748b;
+      font-weight: 500;
+    }
+    .item-bullets {
+      list-style-type: disc;
+      padding-left: 16px;
+      margin-top: 3px;
+      margin-bottom: 6px;
+    }
+    .item-bullets li {
+      margin-bottom: 2.5px;
+      color: #334155;
+      font-size: 8.9pt;
+      line-height: 1.35;
+    }
+    .item-bullets strong {
+      color: #0f172a;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="name">Ranjeet Shirsath</div>
+    <div class="title">Data Scientist & Applied ML Engineer (2+ YOE)</div>
+    <div class="contact-row">
+      <span>📍 Pune, India</span>
+      <span>•</span>
+      <span>✉️ <a href="mailto:ranjeetshirsath358@gmail.com">ranjeetshirsath358@gmail.com</a></span>
+      <span>•</span>
+      <span>🌐 <a href="https://github.com/rsshir60">github.com/rsshir60</a></span>
+      <span>•</span>
+      <span>🔗 <a href="https://linkedin.com/in/ranjeet-shirsath-45b97324b">linkedin.com/in/ranjeet-shirsath</a></span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Professional Summary</div>
+    <div class="summary-text">
+      Applied Data Scientist with <strong>2+ years of experience</strong> architecting high-throughput machine learning pipelines, predictive modeling systems, and enterprise retrieval architectures. Proven track record translating ambiguous business objectives into production-grade systems—specialized in end-to-end MLOps lifecycles, automated feature engineering, Bayesian hyperparameter optimization, and low-latency RESTful inference serving. Experienced in modern tabular ensembles, time-series forecasting, and hybrid sparse-dense semantic search (RAG).
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Core Technical Competencies</div>
+    <table class="skills-table">
+      <tr>
+        <td class="skills-label">Languages & Core:</td>
+        <td class="skills-val">Python (NumPy, Pandas, Polars, SciPy), SQL (PostgreSQL, BigQuery), Bash, C++</td>
+      </tr>
+      <tr>
+        <td class="skills-label">ML & Deep Learning:</td>
+        <td class="skills-val">Scikit-Learn, LightGBM, XGBoost, CatBoost, PyTorch, Hugging Face Transformers, Optuna</td>
+      </tr>
+      <tr>
+        <td class="skills-label">MLOps & Infrastructure:</td>
+        <td class="skills-val">FastAPI, Docker, Docker Compose, MLflow, DVC, Git, GitHub Actions (CI/CD), Pytest</td>
+      </tr>
+      <tr>
+        <td class="skills-label">Retrieval & NLP:</td>
+        <td class="skills-val">RAG Architectures, Dense Vector Embeddings, Cosine Similarity, BM25 Search, RRF Ranking</td>
+      </tr>
+      <tr>
+        <td class="skills-label">Data Engineering:</td>
+        <td class="skills-val">Relational Schema Design, Feature Stores, Data Validation (Pydantic, Great Expectations), ETL</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Professional Experience</div>
+    
+    <div class="item-header">
+      <div class="item-title">Data Scientist & ML Engineer — <span class="item-org">Enterprise Intelligence Solutions</span></div>
+      <div class="item-date">Aug 2024 – Present | Remote / Hybrid</div>
+    </div>
+    <ul class="item-bullets">
+      <li>Architected and deployed automated tabular ML inference pipelines serving real-time churn and risk-scoring models under <strong>sub-30ms SLA constraints</strong>.</li>
+      <li>Engineered automated data validation layers utilizing <strong>Pydantic</strong> and custom outlier-clipping transformers, eliminating pipeline failures caused by telemetry schema drift.</li>
+      <li>Implemented stratified cross-validation routines and Bayesian hyperparameter searches with <strong>Optuna</strong>, lifting model <strong>ROC-AUC from 0.72 to 0.88</strong> across imbalanced datasets.</li>
+      <li>Containerized model inference microservices with <strong>Docker</strong> and orchestrated continuous integration via <strong>GitHub Actions</strong>, achieving 100% automated regression test coverage using <strong>Pytest</strong>.</li>
+      <li>Collaborated with product and engineering teams to design A/B test frameworks and cohort retention monitoring dashboards using advanced <strong>SQL window functions</strong>.</li>
+    </ul>
+
+    <div class="item-header">
+      <div class="item-title">Machine Learning & Data Associate — <span class="item-org">Digital Solutions Lab</span></div>
+      <div class="item-date">Jun 2023 – Jul 2024</div>
+    </div>
+    <ul class="item-bullets">
+      <li>Developed end-to-end exploratory data analysis (EDA) and feature transformation workflows for large multi-source relational datasets using <strong>Pandas</strong>, <strong>Polars</strong>, and <strong>PostgreSQL</strong>.</li>
+      <li>Built automated behavioral feature aggregation scripts (rolling interaction densities, inactivity windows, lifetime spend metrics) that improved classifier <strong>F1-scores by 14%</strong>.</li>
+      <li>Conducted comparative performance benchmarks between tree-based ensembles (Random Forest, LightGBM) and linear baselines, documenting model trade-offs for technical leadership.</li>
+      <li>Streamlined model serialization and artifact versioning protocols with Joblib and <strong>MLflow tracking registries</strong>.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Flagship Open-Source ML & AI Systems</div>
+
+    <div class="item-header">
+      <div class="item-title">mobicool-core: Production MLOps Predictive Platform | <a href="https://github.com/rsshir60/mobicool-core">github.com/rsshir60/mobicool-core</a></div>
+    </div>
+    <ul class="item-bullets">
+      <li><strong>Stack:</strong> Python, Scikit-Learn, FastAPI, Pydantic, Docker, Pytest, GitHub Actions</li>
+      <li>Designed and built a modular production MLOps architecture featuring automated feature scaling, target encoding, and quantile clipping transformers.</li>
+      <li>Integrated asynchronous FastAPI REST endpoints for real-time model scoring with payload schema validation and latency instrumentation.</li>
+      <li>Implemented automated CI/CD pipeline executing unit tests, linting, and dependency checks on every commit, ensuring zero-downtime reproducibility.</li>
+    </ul>
+
+    <div class="item-header">
+      <div class="item-title">semantic-rag-engine: Hybrid Semantic Retrieval & RAG System | <a href="https://github.com/rsshir60/semantic-rag-engine">github.com/rsshir60/semantic-rag-engine</a></div>
+    </div>
+    <ul class="item-bullets">
+      <li><strong>Stack:</strong> Python, PyTorch, BM25, Vector Embeddings, FastAPI, Reciprocal Rank Fusion (RRF), Docker</li>
+      <li>Engineered an enterprise hybrid retrieval engine combining BM25 sparse lexical indexing with dense semantic vector embeddings.</li>
+      <li>Formulated custom Reciprocal Rank Fusion (RRF) ranking logic to calibrate hybrid query results, mitigating retrieval hallucinations and improving <strong>Top-5 document recall by 31%</strong>.</li>
+      <li>Deployed multi-mode search endpoints (dense, sparse, hybrid) containerized via Docker with sub-10ms evaluation latency.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Education & Credentials</div>
+    <div class="item-header">
+      <div class="item-title">Bachelor of Engineering in Computer Science</div>
+      <div class="item-date">Graduated: 2024</div>
+    </div>
+    <ul class="item-bullets">
+      <li><strong>Certifications & Training:</strong> Machine Learning Engineering, Advanced SQL for Data Scientists, End-to-End MLOps</li>
+    </ul>
+  </div>
+
+</body>
+</html>
