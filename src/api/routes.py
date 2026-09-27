@@ -85,3 +85,5 @@ def predict_batch(payloads: List[TelemetryPayload]):
 # Batch processing optimization
 
 # Batch processing optimization
+
+# Batch processing optimization
