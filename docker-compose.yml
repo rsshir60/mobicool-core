@@ -12,3 +12,5 @@ services:
     volumes:
       - ./src/models/artifacts:/app/src/models/artifacts
     restart: unless-stopped
+
+# Corrected: restart: unless-stopped (avoids restart loop on intentional shutdown)
