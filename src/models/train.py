@@ -127,3 +127,8 @@ if __name__ == "__main__":
 # GBC alternative estimator configuration
 # Swap into Pipeline step 'classifier' for comparison runs:
 # clf = GradientBoostingClassifier(n_estimators=200, max_depth=4, learning_rate=0.05, subsample=0.8, random_state=42)
+
+
+# GBC alternative estimator configuration
+# Swap into Pipeline step 'classifier' for comparison runs:
+# clf = GradientBoostingClassifier(n_estimators=200, max_depth=4, learning_rate=0.05, subsample=0.8, random_state=42)
