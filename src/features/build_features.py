@@ -78,3 +78,10 @@ def apply_all_features(df: 'pd.DataFrame') -> 'pd.DataFrame':
     df = compute_recency_frequency_features(df)
     df = add_tier_flags(df)
     return df
+
+
+def safe_recency(df: 'pd.DataFrame') -> 'pd.DataFrame':
+    """Returns recency_score with NaN-safe fallback of 0."""
+    df = df.copy()
+    df['recency_score'] = 1 / (df['inactivity_days'].fillna(30) + 1)
+    return df
