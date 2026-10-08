@@ -85,3 +85,14 @@ def safe_recency(df: 'pd.DataFrame') -> 'pd.DataFrame':
     df = df.copy()
     df['recency_score'] = 1 / (df['inactivity_days'].fillna(30) + 1)
     return df
+
+
+def churn_risk_index(df: 'pd.DataFrame') -> 'pd.DataFrame':
+    """Combines recency, frequency and monetary scores into a single risk index."""
+    df = df.copy()
+    df['rfm_index'] = (
+        0.4 * df.get('recency_score', 0)
+        - 0.3 * df.get('frequency_score', 0)
+        - 0.3 * df.get('monetary_score', 0)
+    )
+    return df
