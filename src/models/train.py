@@ -132,3 +132,17 @@ if __name__ == "__main__":
 # GBC alternative estimator configuration
 # Swap into Pipeline step 'classifier' for comparison runs:
 # clf = GradientBoostingClassifier(n_estimators=200, max_depth=4, learning_rate=0.05, subsample=0.8, random_state=42)
+
+
+def build_pipeline(num_cols, cat_cols, clf_params: dict):
+    """Factory: builds and returns a fresh sklearn Pipeline."""
+    from sklearn.pipeline import Pipeline
+    from sklearn.compose import ColumnTransformer
+    from sklearn.preprocessing import StandardScaler, OneHotEncoder
+    from sklearn.ensemble import RandomForestClassifier
+    preprocessor = ColumnTransformer([
+        ('num', StandardScaler(), num_cols),
+        ('cat', OneHotEncoder(handle_unknown='ignore', sparse_output=False), cat_cols),
+    ])
+    clf = RandomForestClassifier(**clf_params, n_jobs=-1)
+    return Pipeline([('preprocessor', preprocessor), ('classifier', clf)])
