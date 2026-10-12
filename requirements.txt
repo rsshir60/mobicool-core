@@ -35,3 +35,5 @@ httpx>=0.27.0
 # Dependency lock
 
 # Dependency lock
+
+polars>=0.20.0
