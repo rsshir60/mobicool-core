@@ -96,3 +96,10 @@ def churn_risk_index(df: 'pd.DataFrame') -> 'pd.DataFrame':
         - 0.3 * df.get('monetary_score', 0)
     )
     return df
+
+
+def add_tier_flags(df: 'pd.DataFrame') -> 'pd.DataFrame':
+    df = df.copy()
+    df['is_premium'] = (df['subscription_tier'] == 'premium').astype(int)
+    df['is_free']    = (df['subscription_tier'] == 'free').astype(int)
+    return df
