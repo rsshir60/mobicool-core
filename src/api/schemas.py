@@ -41,3 +41,16 @@ class BatchPredictionResponse(BaseModel):
 # Confidence rating schema
 
 # Confidence rating schema
+
+
+class Config:
+    json_schema_extra = {
+        'example': {
+            'session_duration_sec': 342.5,
+            'events_per_session': 18,
+            'inactivity_days': 3,
+            'total_spend': 49.99,
+            'subscription_tier': 'standard',
+            'device_os': 'ios',
+        }
+    }
