@@ -91,3 +91,12 @@ def predict_batch(payloads: List[TelemetryPayload]):
 # Validation exception guard
 
 # Validation exception guard
+
+
+def _confidence_label(prob: float) -> str:
+    """Maps probability to human-readable confidence band."""
+    if prob >= 0.85 or prob <= 0.15:
+        return 'high'
+    elif prob >= 0.70 or prob <= 0.30:
+        return 'moderate'
+    return 'low'
