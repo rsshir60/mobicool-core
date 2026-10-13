@@ -129,3 +129,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 <!-- Architecture spec update -->
 
 <!-- Architecture spec update -->
+
+
+### Batch Inference Example
+```bash
+curl -X POST http://localhost:8000/v1/predict/batch \
+  -H 'Content-Type: application/json' \
+  -d '[{"session_duration_sec": 200, "events_per_session": 12, "inactivity_days": 4, "total_spend": 35.0, "subscription_tier": "standard", "device_os": "ios"}]'
+```
