@@ -26,3 +26,14 @@ def test_accuracy_value():
     y_prob = np.array([0.9, 0.1, 0.8, 0.4, 0.2])
     metrics = evaluate_classification(y_true, y_pred, y_prob)
     assert metrics["accuracy"] == pytest.approx(0.8)
+
+
+def test_extended_metrics_present():
+    import numpy as np
+    from src.models.metrics import evaluate_classification
+    y_true = np.array([1,0,1,0,1])
+    y_pred = np.array([1,0,1,0,1])
+    y_prob = np.array([0.9,0.05,0.87,0.1,0.93])
+    m = evaluate_classification(y_true, y_pred, y_prob)
+    assert 'pr_auc' in m
+    assert 'log_loss' in m
