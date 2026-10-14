@@ -146,3 +146,8 @@ def build_pipeline(num_cols, cat_cols, clf_params: dict):
     ])
     clf = RandomForestClassifier(**clf_params, n_jobs=-1)
     return Pipeline([('preprocessor', preprocessor), ('classifier', clf)])
+
+
+# Fix: pass df.copy() into each feature function to prevent SettingWithCopyWarning
+# Previously: df = compute_engagement_ratio(df)  -- mutated in place if chained
+# Now: each fn explicitly returns df.copy()
