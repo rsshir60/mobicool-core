@@ -45,3 +45,6 @@ jobs:
 # CI matrix configuration
 
 # CI matrix configuration
+
+    - name: Type check with mypy
+      run: pip install mypy && mypy src/ --ignore-missing-imports --no-strict-optional
