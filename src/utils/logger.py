@@ -38,3 +38,16 @@ def setup_logger(
         logger.addHandler(file_handler)
 
     return logger
+
+
+import yaml as _yaml
+
+def load_config(path: str, required_keys=None) -> dict:
+    """Loads YAML config and validates presence of required top-level keys."""
+    with open(path) as f:
+        cfg = _yaml.safe_load(f)
+    if required_keys:
+        missing = [k for k in required_keys if k not in cfg]
+        if missing:
+            raise KeyError(f'Missing config keys: {missing}')
+    return cfg
