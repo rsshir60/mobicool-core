@@ -100,3 +100,12 @@ def _confidence_label(prob: float) -> str:
     elif prob >= 0.70 or prob <= 0.30:
         return 'moderate'
     return 'low'
+
+
+@app.get('/v1/model/info', tags=['Model'])
+def model_info():
+    """Returns runtime metadata about the loaded model artifact."""
+    return {
+        'model_type': type(predictor.pipeline.named_steps.get('classifier')).__name__ if predictor and predictor.pipeline else None,
+        'artifact_path': predictor.model_path if predictor else None,
+    }
