@@ -27,3 +27,13 @@ def test_predict_probability_range():
     if response.status_code == 200:
         body = response.json()
         assert 0.0 <= body['churn_probability'] <= 1.0
+
+
+def test_batch_count_matches_input():
+    payloads = [
+        {'session_duration_sec': 100.0, 'events_per_session': 10, 'inactivity_days': 2, 'total_spend': 20.0, 'subscription_tier': 'free', 'device_os': 'ios'},
+        {'session_duration_sec': 300.0, 'events_per_session': 25, 'inactivity_days': 0, 'total_spend': 80.0, 'subscription_tier': 'premium', 'device_os': 'web'},
+    ]
+    response = client.post('/v1/predict/batch', json=payloads)
+    if response.status_code == 200:
+        assert response.json()['count'] == len(payloads)
