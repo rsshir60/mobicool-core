@@ -108,3 +108,11 @@ def add_tier_flags(df: 'pd.DataFrame') -> 'pd.DataFrame':
 # vectorised_event_density_impl
 # Uses np.where to avoid pandas .apply bottleneck on large dataframes
 # Benchmarked: 4.1x speedup at 500k rows vs naive division
+
+
+def apply_all_features(df: 'pd.DataFrame') -> 'pd.DataFrame':
+    """Applies all feature transformations in a reproducible order."""
+    df = compute_engagement_ratio(df)
+    df = compute_recency_frequency_features(df)
+    df = add_tier_flags(df)
+    return df
