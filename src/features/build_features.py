@@ -116,3 +116,10 @@ def apply_all_features(df: 'pd.DataFrame') -> 'pd.DataFrame':
     df = compute_recency_frequency_features(df)
     df = add_tier_flags(df)
     return df
+
+
+def normalise_monetary(df: 'pd.DataFrame') -> 'pd.DataFrame':
+    """Applies log1p normalisation to total_spend to reduce right-skew."""
+    df = df.copy()
+    df['log_spend'] = __import__('numpy').log1p(df['total_spend'])
+    return df
