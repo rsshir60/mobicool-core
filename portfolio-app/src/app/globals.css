@@ -1,0 +1,208 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: #090d16;
+    --foreground: #f1f5f9;
+    --card: #0f172a;
+    --card-foreground: #f8fafc;
+    --primary: #38bdf8;
+    --primary-glow: rgba(56, 189, 248, 0.25);
+    --accent: #10b981;
+    --accent-glow: rgba(16, 185, 129, 0.25);
+    --purple: #a855f7;
+    --muted: #1e293b;
+    --muted-foreground: #94a3b8;
+    --border: rgba(255, 255, 255, 0.08);
+    --border-highlight: rgba(56, 189, 248, 0.35);
+    color-scheme: dark light;
+    accent-color: #38bdf8;
+  }
+
+  [data-theme="light"] {
+    --background: #f8fafc;
+    --foreground: #0f172a;
+    --card: #ffffff;
+    --card-foreground: #0f172a;
+    --primary: #0284c7;
+    --primary-glow: rgba(2, 132, 199, 0.15);
+    --accent: #059669;
+    --accent-glow: rgba(5, 150, 105, 0.15);
+    --purple: #7e22ce;
+    --muted: #f1f5f9;
+    --muted-foreground: #64748b;
+    --border: rgba(15, 23, 42, 0.1);
+    --border-highlight: rgba(2, 132, 199, 0.4);
+    color-scheme: light dark;
+    accent-color: #0284c7;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Modern custom scrollbar — modern-web-guidance/scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(56, 189, 248, 0.4) transparent;
+}
+
+@supports not (scrollbar-color: auto) {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(56, 189, 248, 0.35);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(56, 189, 248, 0.6);
+  }
+}
+
+/* Glassmorphism — modern-web-guidance/visual-effects */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+}
+
+[data-theme="light"] .glass-panel {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 35px -5px rgba(56, 189, 248, 0.25);
+}
+
+.glow-emerald {
+  box-shadow: 0 0 35px -5px rgba(16, 185, 129, 0.25);
+}
+
+/* Grid background pattern — modern-web-guidance/visual-effects (gradient patterns) */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+[data-theme="light"] .bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+}
+
+/* Typography — modern-web-guidance/typography */
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* Focus ring — modern-web-guidance/accessibility */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Skip to content link — modern-web-guidance/accessibility */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.75rem 1.5rem;
+  background: var(--primary);
+  color: #000;
+  font-weight: 700;
+  border-radius: 0 0 0.75rem 0.75rem;
+  transition: top 0.15s ease;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* Native scroll-driven entry animations — modern-web-guidance/scroll-entry-exit-effects */
+@media (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    @keyframes fade-slide-up {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+    }
+
+    @keyframes fade-slide-down {
+      to {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+    }
+
+    .scroll-reveal {
+      animation:
+        fade-slide-up auto linear backwards,
+        fade-slide-down auto linear forwards;
+      animation-timeline: view();
+      animation-range: entry 0% entry 100%, exit 70% exit 100%;
+    }
+  }
+}
+
+/* JS-based fallback class for scroll reveal in unsupported browsers */
+.scroll-reveal-js {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.scroll-reveal-js.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Soft edge scroll fade — modern-web-guidance/soft-edge-content-fade */
+.scroll-fade-bottom {
+  -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+/* Pulsing glow keyframe */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+/* Reduced motion safety net — modern-web-guidance/motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
