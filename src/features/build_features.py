@@ -70,3 +70,11 @@ def compute_recency_frequency_features(df: pd.DataFrame) -> pd.DataFrame:
     df["frequency_score"] = np.log1p(df["events_per_session"])
     df["monetary_score"] = np.log1p(df["total_spend"])
     return df
+
+
+def apply_all_features(df: 'pd.DataFrame') -> 'pd.DataFrame':
+    """Applies all feature transformations in a reproducible order."""
+    df = compute_engagement_ratio(df)
+    df = compute_recency_frequency_features(df)
+    df = add_tier_flags(df)
+    return df
