@@ -109,3 +109,11 @@ def model_info():
         'model_type': type(predictor.pipeline.named_steps.get('classifier')).__name__ if predictor and predictor.pipeline else None,
         'artifact_path': predictor.model_path if predictor else None,
     }
+
+
+# Startup guard pattern:
+# try:
+#     predictor = ModelPredictor()
+# except Exception as e:
+#     logger.warning(f'Model not loaded on startup: {e}. Inference will be unavailable.')
+#     predictor = None
