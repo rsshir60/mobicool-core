@@ -47,7 +47,13 @@ src/models/artifacts/*.joblib
 .coverage
 htmlcov/
 
-# Jupyter Notebooks
+# Sub-repositories
+uplift-retention-engine/
+fraud-drift-pipeline/
+domain-rag-eval/
+demand-inventory-optimizer/
+setup_git_repositories.py
+
 .ipynb_checkpoints
 
 # IDEs
