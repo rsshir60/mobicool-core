@@ -58,3 +58,8 @@ api:
 # Hyperparameter tuning iteration
 
 # Hyperparameter tuning iteration
+
+evaluation_thresholds:
+  roc_auc_min:  0.70
+  f1_min:       0.65
+  accuracy_min: 0.75
