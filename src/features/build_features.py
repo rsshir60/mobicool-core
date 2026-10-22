@@ -1,8 +1,7 @@
-﻿from typing import Optional, List
+from typing import Optional, List
 import pandas as pd
 import numpy as np
 from sklearn.base import BaseEstimator, TransformerMixin
-
 
 class OutlierClipper(BaseEstimator, TransformerMixin):
     """Clips numerical columns to [lower_quantile, upper_quantile] range.
@@ -33,7 +32,6 @@ class OutlierClipper(BaseEstimator, TransformerMixin):
                 X_out[col] = X_out[col].clip(lower=lo, upper=hi)
         return X_out
 
-
 class LagFeatureGenerator(BaseEstimator, TransformerMixin):
     """Appends lag features for specified numeric columns over given windows."""
 
@@ -52,7 +50,6 @@ class LagFeatureGenerator(BaseEstimator, TransformerMixin):
                     X_out[f"{col}_lag{lag}"] = X_out[col].shift(lag)
         return X_out.fillna(0)
 
-
 def compute_engagement_ratio(df: pd.DataFrame) -> pd.DataFrame:
     """Derives behavioural telemetry features from raw user interaction data."""
     df = df.copy()
@@ -62,7 +59,6 @@ def compute_engagement_ratio(df: pd.DataFrame) -> pd.DataFrame:
     df["spend_per_session"] = df["total_spend"] / (df["events_per_session"] + 1)
     return df
 
-
 def compute_recency_frequency_features(df: pd.DataFrame) -> pd.DataFrame:
     """Computes RFM-style features for churn prediction tasks."""
     df = df.copy()
@@ -71,55 +67,40 @@ def compute_recency_frequency_features(df: pd.DataFrame) -> pd.DataFrame:
     df["monetary_score"] = np.log1p(df["total_spend"])
     return df
 
-
-def apply_all_features(df: 'pd.DataFrame') -> 'pd.DataFrame':
-    """Applies all feature transformations in a reproducible order."""
-    df = compute_engagement_ratio(df)
-    df = compute_recency_frequency_features(df)
-    df = add_tier_flags(df)
-    return df
-
-
-def safe_recency(df: 'pd.DataFrame') -> 'pd.DataFrame':
-    """Returns recency_score with NaN-safe fallback of 0."""
+def add_tier_flags(df: pd.DataFrame) -> pd.DataFrame:
+    """Adds binary indicator flags for subscription tiers."""
     df = df.copy()
-    df['recency_score'] = 1 / (df['inactivity_days'].fillna(30) + 1)
+    df["is_premium"] = (df["subscription_tier"] == "premium").astype(int)
+    df["is_free"] = (df["subscription_tier"] == "free").astype(int)
     return df
 
+def safe_recency(df: pd.DataFrame) -> pd.DataFrame:
+    """Returns recency_score with NaN-safe fallback."""
+    df = df.copy()
+    df["recency_score"] = 1 / (df["inactivity_days"].fillna(30) + 1)
+    return df
 
-def churn_risk_index(df: 'pd.DataFrame') -> 'pd.DataFrame':
+def churn_risk_index(df: pd.DataFrame) -> pd.DataFrame:
     """Combines recency, frequency and monetary scores into a single risk index."""
     df = df.copy()
-    df['rfm_index'] = (
-        0.4 * df.get('recency_score', 0)
-        - 0.3 * df.get('frequency_score', 0)
-        - 0.3 * df.get('monetary_score', 0)
+    df["rfm_index"] = (
+        0.4 * df.get("recency_score", 0)
+        - 0.3 * df.get("frequency_score", 0)
+        - 0.3 * df.get("monetary_score", 0)
     )
     return df
 
-
-def add_tier_flags(df: 'pd.DataFrame') -> 'pd.DataFrame':
+def normalise_monetary(df: pd.DataFrame) -> pd.DataFrame:
+    """Applies log1p normalisation to total_spend to reduce right-skew."""
     df = df.copy()
-    df['is_premium'] = (df['subscription_tier'] == 'premium').astype(int)
-    df['is_free']    = (df['subscription_tier'] == 'free').astype(int)
+    df["log_spend"] = np.log1p(df["total_spend"])
     return df
 
-
-# vectorised_event_density_impl
-# Uses np.where to avoid pandas .apply bottleneck on large dataframes
-# Benchmarked: 4.1x speedup at 500k rows vs naive division
-
-
-def apply_all_features(df: 'pd.DataFrame') -> 'pd.DataFrame':
+def apply_all_features(df: pd.DataFrame) -> pd.DataFrame:
     """Applies all feature transformations in a reproducible order."""
     df = compute_engagement_ratio(df)
     df = compute_recency_frequency_features(df)
     df = add_tier_flags(df)
-    return df
-
-
-def normalise_monetary(df: 'pd.DataFrame') -> 'pd.DataFrame':
-    """Applies log1p normalisation to total_spend to reduce right-skew."""
-    df = df.copy()
-    df['log_spend'] = __import__('numpy').log1p(df['total_spend'])
+    df = churn_risk_index(df)
+    df = normalise_monetary(df)
     return df
